@@ -1,13 +1,13 @@
 import streamlit as st
-import pickle
+import joblib
 import pandas as pd
 import requests
 
 
-movie_dict = pickle.load(open("movie_dict.pkl",'rb'))
+movie_dict = joblib.load("movie_dict.jbl")
 movies = pd.DataFrame(movie_dict)
 
-similarity = pickle.load(open("similarity.pkl",'rb'))
+similarity = joblib.load("similarity.jbl")
 
 def fetch_poster(movie_id):
     response = requests.get('https://api.themoviedb.org/3/movie/{}?api_key=aa58feccdea654d6a58d5d6102717e1f&language=en-US'.format(movie_id))
